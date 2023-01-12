@@ -1,0 +1,61 @@
+###############################################################################
+# Build the Entire App
+#
+# Am using volumes in this Dev environment to allow sppedy dev
+# Rather than having to rebuild images and deploy new containers
+#
+###############################################################################
+
+version: '2'
+services:
+  
+  
+  # The Origional Quote Service
+  quotes:
+    hostname: quoteservice
+    volumes:
+      - ./QuoteService/main.py:/usr/src/app/main.py
+    build:
+      context: ./QuoteService
+      dockerfile: app.dockerfile
+      
+  # My new Service
+  dave:
+    hostname: daveservice
+    volumes:
+      - ./DaveService/main.py:/usr/src/app/main.py
+    build:
+      context: ./DaveService
+      dockerfile: app.dockerfile
+      
+  
+  # The API GateWay Service
+  api:
+    hostname: apigateway
+    environment:
+      - "QUOTES_API=http://quotes:5000"
+      - "DAVE_API=http://dave:5001"
+    volumes:
+      - ./ApiGateway/index.js:/usr/src/app/index.js
+    build:
+      context: ./ApiGateway
+      dockerfile: app.dockerfile
+    depends_on:
+      - quotes
+      - dave
+    ports:
+      - "3000:3000"
+
+
+  # The UI Front End Service
+  frontend:
+    hostname: uiserver
+    volumes:
+      - ./FrontendApplication/dist/index.html:/var/www/index.html
+      - ./FrontendApplication/dist/script.js:/var/www/script.js
+    build:
+      context: ./FrontendApplication
+      dockerfile: app.dockerfile
+    ports:
+      - "8080:80"
+    
