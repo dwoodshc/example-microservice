@@ -52,7 +52,7 @@ services:
     hostname: uiserver
     volumes:
       - ./FrontendApplication/dist/index.html:/var/www/index.html
-      - ./FrontendApplication/dist/script.js:/var/www/script.js
+      - ./FrontendApplication/dist/main.js:/var/www/main.js
     build:
       context: ./FrontendApplication
       dockerfile: app.dockerfile

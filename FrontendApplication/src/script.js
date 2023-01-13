@@ -10,7 +10,7 @@ $(document).ready(function() {
             success: function(data) {
                 $("#quote").removeClass('is-danger') 
                 $("#quote").addClass('is-link')
-                $("#quote").html(data.quote.quote + '</br><b>'+ data.quote.by +'</b>'); 
+                $("#quote").html(data.quote.quote + '</br><b>'+ data.quote.by +'</br></br><b>Service details - \['+ data.quote.details +'\]</b>'); 
             },
             error: function(xmlhttprequest, textstatus, message) {
                 $("#quote").removeClass('is-link')
@@ -35,7 +35,7 @@ $(document).ready(function() {
             success: function(data) {
                 $("#quoteDave").removeClass('is-danger') 
                 $("#quoteDave").addClass('is-link')
-                $("#quoteDave").html(data.quote.quote + '</br><b>'+ data.quote.by +'</b>'); 
+                $("#quoteDave").html(data.quote.quote + '</br></br><b>Service details - \['+ data.quote.details +'\]</b>'); 
             },
             error: function(xmlhttprequest, textstatus, message) {
                 $("#quoteDave").removeClass('is-link')

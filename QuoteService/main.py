@@ -2,6 +2,7 @@ from flask import Flask
 from flask import jsonify
 import random
 import socket
+from datetime import datetime
 
 QUOTES_FILE = "./quotes.txt" # quote file
 quotes = [] # stores all quotes
@@ -27,16 +28,9 @@ app = Flask(__name__)
 @app.route("/api/quote-random")
 def quote():
     q = random.choice(quotes) # selects a random quote from file
-    return jsonify({"quote": q.quote, "by": str(socket.gethostname())}) # return a quote
-
-
-
-# Gets a Dave quote 
-#@app.route("/api/quote-dave")
-#def quotedave():
-#    #q = random.choice(quotes) # selects a random quote from file
-#    return jsonify({"quote": 'Hello', "by": 'Dave'}) # return a quote
-
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    return jsonify({"quote": q.quote, "by": q.by, "details": str(socket.gethostname()) + ' at ' + str(current_time) })
 
 
 # 404 Erorr for unknown routes
