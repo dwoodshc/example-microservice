@@ -1,5 +1,5 @@
 ###############################################################################
-# This is one service
+# This is the Quote service server
 ###############################################################################
 
 # Select official python 3 runtime
@@ -18,7 +18,7 @@ COPY . /usr/src/app
 RUN python -mpip install -r requrinments.txt
 
 # Expose the port
-EXPOSE 5001
+EXPOSE 5000
 
 # Start the application
 CMD ["python", "main.py"]

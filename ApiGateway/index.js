@@ -1,3 +1,7 @@
+/******************************************************************************/
+/* This the main routing code for the API Gateway/Proxy                       */
+/*                                                                            */
+/******************************************************************************/
 const express = require('express')
 const axios = require('axios')
 const cors = require('cors')
@@ -6,29 +10,24 @@ const app = express()
 // Get the quotes api from the environment(refer docker-compose.yml)
 // This is what tells the app which server/port to contact
 const QUOTES_API_GATEWAY = process.env.QUOTES_API
-const DAVE_API_GATEWAY = process.env.DAVE_API
+const TEST_API_GATEWAY = process.env.TEST_API
 
 // Use CORS to prevent Cross-Origin Requets issue
 app.use(cors())
 
-/******************************************* */
+/******************************************************************************/
 /* General API */
-/******************************************* */
+/******************************************************************************/
 
 // Get the status of the API
 app.get('/api/status', (req, res) => {
-    return res.json({status: 'ok'})
-})
-
-// Get the status of the API
-app.get('/api/statusDave', (req, res) => {
-    return res.json({status: 'OK from Dave'})
+    return res.json({status: 'OK from Status'})
 })
 
 
-/******************************************* */
+/******************************************************************************/
 /* Quote API */
-/******************************************* */
+/******************************************************************************/
 
 // Returns a random quote from the quote api
 app.get('/api/randomquote',async (req, res) => {
@@ -50,20 +49,18 @@ app.get('/api/randomquote',async (req, res) => {
 })
 
 
+/******************************************************************************/
+/* Test API */
+/******************************************************************************/
 
-/******************************************* */
-/* Dave API */
-/******************************************* */
-
-// Returns a random quote from the quote api
-app.get('/api/davequote',async (req, res) => {
+// Returns a string from the test api
+app.get('/api/test',async (req, res) => {
     try {
-        const url = DAVE_API_GATEWAY + '/api/quote-dave'
-        const quote = await axios.get(url)
+        const url = TEST_API_GATEWAY + '/api/test'
+        const test = await axios.get(url)
         return res.json({
             time: Date.now(),
-            quote: quote.data
-            //quote: "dsdsadasfffff"
+            test: test.data
         })
     } catch (error) {
         console.log(error)
@@ -76,11 +73,9 @@ app.get('/api/davequote',async (req, res) => {
 })
 
 
-
-
-/******************************************* */
-/* General API */
-/******************************************* */
+/******************************************************************************/
+/* Operational Methods */
+/******************************************************************************/
 
 // Handle any unknown route
 app.get('*', (req, res) => {

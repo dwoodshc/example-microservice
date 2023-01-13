@@ -8,33 +8,31 @@
 
 version: '2'
 services:
-  
-  
+ 
   # The Origional Quote Service
   quotes:
-    hostname: quoteservice
+    hostname: servicequote
     volumes:
-      - ./QuoteService/main.py:/usr/src/app/main.py
+      - ./ServiceQuote/main.py:/usr/src/app/main.py
     build:
-      context: ./QuoteService
+      context: ./ServiceQuote
       dockerfile: app.dockerfile
       
-  # My new Service
-  dave:
-    hostname: daveservice
+  # New Test Service
+  test:
+    hostname: servicetest
     volumes:
-      - ./DaveService/main.py:/usr/src/app/main.py
+      - ./ServiceTest/main.py:/usr/src/app/main.py
     build:
-      context: ./DaveService
+      context: ./ServiceTest
       dockerfile: app.dockerfile
       
-  
   # The API GateWay Service
   api:
     hostname: apigateway
     environment:
       - "QUOTES_API=http://quotes:5000"
-      - "DAVE_API=http://dave:5001"
+      - "TEST_API=http://test:5001"
     volumes:
       - ./ApiGateway/index.js:/usr/src/app/index.js
     build:
@@ -42,10 +40,9 @@ services:
       dockerfile: app.dockerfile
     depends_on:
       - quotes
-      - dave
+      - test
     ports:
       - "3000:3000"
-
 
   # The UI Front End Service
   frontend:

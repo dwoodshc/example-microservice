@@ -8,7 +8,7 @@ images=(
     example-microservice_api
     example-microservice_frontend
     example-microservice_quotes
-    example-microservice_dave
+    example-microservice_test
 )
 
 clear

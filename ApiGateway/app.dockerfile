@@ -1,5 +1,7 @@
 ###############################################################################
 # This is the Gateway or Proxy Server for the API Routing
+#
+# Makes use of the existing NODE Docker image, plus some code in index.js
 ###############################################################################
 
 # Use official node image from docker

@@ -1,7 +1,8 @@
 ###############################################################################
-# This is one service
+# This is the Test service server
+#
+# Used as a way to play with new idea
 ###############################################################################
-
 
 # Select official python 3 runtime
 FROM python:3
@@ -19,7 +20,7 @@ COPY . /usr/src/app
 RUN python -mpip install -r requrinments.txt
 
 # Expose the port
-EXPOSE 5000
+EXPOSE 5001
 
 # Start the application
 CMD ["python", "main.py"]

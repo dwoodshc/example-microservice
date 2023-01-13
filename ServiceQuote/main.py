@@ -1,3 +1,8 @@
+###############################################################################
+# Service to get ramdom qoute from quotes.txt
+#
+###############################################################################
+
 from flask import Flask
 from flask import jsonify
 import random
@@ -7,7 +12,7 @@ from datetime import datetime
 QUOTES_FILE = "./quotes.txt" # quote file
 quotes = [] # stores all quotes
 
-# a quote
+# A quote
 class Quote(object):
     def __init__(self, quote, by):
         self.quote = quote
