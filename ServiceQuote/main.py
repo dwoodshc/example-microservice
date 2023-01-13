@@ -41,7 +41,7 @@ def quote():
 # 404 Erorr for unknown routes
 @app.errorhandler(404)
 def page_not_found(e):
-    return jsonify({"message": "Resource not found"}), 404
+    return jsonify({"message": "Quote Resource not found"}), 404
 
 if __name__ == '__main__':
     loadQuotes() # load quotes 

@@ -18,6 +18,7 @@ A very simple microservice example with NodeJS, Python and Docker
     - `http://YOUR_HOST:3000/api/status` 
     - `http://YOUR_HOST:3000/api/test`
     - `http://YOUR_HOST:3000/api/randomquote`
+    - `http://YOUR_HOST:3000/api/news`
 
 
 ## Build the Frontend

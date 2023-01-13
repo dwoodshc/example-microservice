@@ -11,6 +11,7 @@ const app = express()
 // This is what tells the app which server/port to contact
 const QUOTES_API_GATEWAY = process.env.QUOTES_API
 const TEST_API_GATEWAY = process.env.TEST_API
+const NEWS_API_GATEWAY = process.env.NEWS_API
 
 // Use CORS to prevent Cross-Origin Requets issue
 app.use(cors())
@@ -61,6 +62,30 @@ app.get('/api/test',async (req, res) => {
         return res.json({
             time: Date.now(),
             test: test.data
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500)
+        return res.json({
+            message: "Internal server error",
+        })
+    }
+    
+})
+
+
+/******************************************************************************/
+/* News API */
+/******************************************************************************/
+
+// Returns a headline from the News service
+app.get('/api/news',async (req, res) => {
+    try {
+        const url = NEWS_API_GATEWAY + '/api/news'
+        const news = await axios.get(url)
+        return res.json({
+            time: Date.now(),
+            news: news.data
         })
     } catch (error) {
         console.log(error)

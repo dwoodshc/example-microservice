@@ -26,13 +26,23 @@ services:
     build:
       context: ./ServiceTest
       dockerfile: app.dockerfile
-      
+
+  # News Service
+  news:
+    hostname: servicenews
+    volumes:
+      - ./ServiceNews/main.py:/usr/src/app/main.py
+    build:
+      context: ./ServiceNews
+      dockerfile: app.dockerfile
+
   # The API GateWay Service
   api:
     hostname: apigateway
     environment:
       - "QUOTES_API=http://quotes:5000"
       - "TEST_API=http://test:5001"
+      - "NEWS_API=http://news:5002"
     volumes:
       - ./ApiGateway/index.js:/usr/src/app/index.js
     build:
@@ -41,6 +51,7 @@ services:
     depends_on:
       - quotes
       - test
+      - news
     ports:
       - "3000:3000"
 

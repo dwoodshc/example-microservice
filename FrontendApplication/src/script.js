@@ -53,4 +53,29 @@ $(document).ready(function() {
             }
         })
     })
+
+
+    // Get a News Headline
+    $("#btnNews").click(function() {
+        $.ajax({
+            url: api + "/api/news",
+            type: "GET",
+            dataType: "json",
+            timeout: 3000,
+            success: function(data) {
+                $("#news").removeClass('is-danger') 
+                $("#news").addClass('is-link')
+                $("#news").html(data.news.headline + '</br></br><b>Service details - \['+ data.news.details +'\]</b>'); 
+            },
+            error: function(xmlhttprequest, textstatus, message) {
+                $("#news").removeClass('is-link')
+                $("#news").addClass('is-danger')
+                if(textstatus==="timeout") {
+                    $( "#news" ).html("got timeout");
+                } else {
+                    $( "#news" ).html(message);
+                }
+            }
+        })
+    })
 })
