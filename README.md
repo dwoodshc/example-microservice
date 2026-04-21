@@ -15,10 +15,10 @@ A very simple microservice example with NodeJS, Python and Docker
 ## Testing Backend
 
 - Try these URLS to check whether application is running
-    - `http://YOUR_HOST:3000/api/status` 
-    - `http://YOUR_HOST:3000/api/test`
-    - `http://YOUR_HOST:3000/api/randomquote`
-    - `http://YOUR_HOST:3000/api/news`
+    - `http://YOUR_HOST:3030/api/status` 
+    - `http://YOUR_HOST:3030/api/test`
+    - `http://YOUR_HOST:3030/api/randomquote`
+    - `http://YOUR_HOST:3030/api/news`
 
 
 ## Build the Frontend
