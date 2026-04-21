@@ -52,7 +52,7 @@ To build this to fit your own **IP Address** please follow the steps before you 
 
 ## Test Frontend
 
-- Try `http://YOUR_HOST:8080` to see web app
+- Try `http://YOUR_HOST:8000` to see web app
 
 
 ## Develoment Tips
