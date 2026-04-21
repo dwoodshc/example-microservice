@@ -22,8 +22,8 @@ RUN npm install
 # Copy the application
 COPY . /usr/src/app
 
-# Expose port 3000
-EXPOSE 3000
+# Expose port 3030
+EXPOSE 3030
 
 # Run the script to start server
 CMD [ "npm", "run", "start" ]

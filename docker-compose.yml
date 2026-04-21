@@ -53,7 +53,7 @@ services:
       - test
       - news
     ports:
-      - "3000:3000"
+      - "3030:3030"
 
   # The UI Front End Service
   frontend:
@@ -65,5 +65,5 @@ services:
       context: ./FrontendApplication
       dockerfile: app.dockerfile
     ports:
-      - "8080:80"
+      - "8000:80"
     
