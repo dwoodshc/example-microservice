@@ -53,7 +53,7 @@ services:
       - test
       - news
     ports:
-      - "3000:3000"
+      - "3030:3000"
 
   # The UI Front End Service
   frontend:

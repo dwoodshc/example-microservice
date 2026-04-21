@@ -20,8 +20,8 @@ echo "========================================================================="
 echo " "
 
 # Examples of API Gateway URLs:
-# API_GATEWAY=http://localhost:3000
-# API_GATEWAY=http://192.168.1.176:3000
+# API_GATEWAY=http://localhost:3030
+# API_GATEWAY=http://192.168.1.176:3030
 
 if [ $API_GATEWAY ]; then
   echo "OK: Using API Gateway at ${API_GATEWAY}"
@@ -65,5 +65,5 @@ sleep 5
 
 echo "========================================================================="
 echo "All done!"
-echo "Navigate to http://localhost:8080 to see the frontend application"
+echo "Navigate to http://localhost:8000 to see the frontend application"
 echo "========================================================================="  
